@@ -14,7 +14,7 @@ public class SearchRequestValidator : AbstractValidator<SearchRequest>
         }
         
         RuleFor(p => p.Duration).GreaterThan(0);
-        RuleFor(p => p.DepartOn).GreaterThan(DateTimeOffset.Now);
+        RuleFor(p => p.DepartOn).GreaterThan(DateTimeOffset.Now).WithSeverity(Severity.Warning);
         
         When( p=> p.DepartFrom == null, () => { })
             .Otherwise(() =>
