@@ -29,7 +29,18 @@ public class SearchService : ISearchService
             return response;
         }
 
-        // TODO: Perform actual searches
+        var airports = await _airportRepository.DetermineAirports(request.DepartFrom, request.AirportGroup, cancellationToken);
+        var flights = await _flightRepository.FindFights(airports, request.DepartOn, request.TravelTo, cancellationToken);
+        var hotels = await _hotelRepository.FindHotels(request.TravelTo, request.DepartOn, request.Duration, cancellationToken);
+
+        response.Results = (from f in flights.OrderBy(f => f.Price)
+            from h in hotels.OrderBy(h => h.PricePerNight)
+            select new SearchResult
+            {
+                FlightId = f.Id,
+                HotelId = h.Id,
+                TotalCost = f.Price + (h.PricePerNight * request.Duration)
+            }).OrderBy(p => p.TotalCost);
         
         response.Complete = true;
         return response;

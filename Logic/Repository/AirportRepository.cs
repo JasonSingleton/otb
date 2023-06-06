@@ -39,4 +39,21 @@ public class AirportRepository : IAirportRepository
         
         return ValueTask.FromResult(result);
     }
+    
+    public async ValueTask<IEnumerable<string>?> DetermineAirports(string? airport, bool airportGroup, CancellationToken cancellationToken)
+    {
+        if (airport == null)
+        {
+            return null;
+        }
+
+        if (airportGroup)
+        {
+            return await FetchAirportsFromGroup(airport, cancellationToken);
+        }
+        else
+        {
+            return new[] { airport };
+        }
+    }
 }

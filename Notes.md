@@ -2,10 +2,11 @@
 
 - Generate AC's
 - Create json source files (fix errors)
-- Add project to import sample data
 - Create other project files
   - Tests
   - Logic
+- Add validator for search
+- Import data from json files
 
 # AC's
 ```
@@ -33,17 +34,5 @@ AND: they are staying for 14 nights
 THEN: best match should be flight id 7
 AND: hotel id 6
 ```
-
-# Other
-
-- Validation
-  - Airport code
-
-## Libraries
-
-- NUnit
-- FluentMigration
-- FluentAssertion
-- FluentValidation
 
 

@@ -10,5 +10,5 @@ public record Flight
     public string To { get; set; } = null!;
     public decimal Price { get; set; }
     [JsonPropertyName("departure_date")]
-    public DateTimeOffset DepartureDate { get; set; } 
+    public DateTime DepartureDate { get; set; } 
 }

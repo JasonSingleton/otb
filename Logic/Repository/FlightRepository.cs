@@ -26,4 +26,16 @@ public class FlightRepository : IFlightRepository
     {
         return ValueTask.FromResult(Flights.Count());
     }
+
+    public ValueTask<IEnumerable<Flight>> FindFights(IEnumerable<string>? airport, DateTimeOffset departOn, string travelTo, CancellationToken cancellationToken)
+    {
+        var query = Flights.Where(f => f.DepartureDate == departOn.Date && f.To == travelTo);
+
+        if (airport != null)
+        {
+           query = query.Where(f => airport.Contains(f.From));
+        }
+
+        return ValueTask.FromResult(query);
+    }
 }

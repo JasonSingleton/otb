@@ -22,13 +22,13 @@ public class SearchRequestValidator : AbstractValidator<SearchRequest>
                 When(p => p.AirportGroup, () =>
                     {
                         RuleFor(p => p.DepartFrom)
-                            .MustAsync(async (v, ct) => await airportRepository.AirportGroupExists(v , ct))
+                            .MustAsync(async (v, ct) => await airportRepository.AirportGroupExists(v!, ct))
                             .WithMessage("Invalid airport group specified");
                     })
                     .Otherwise(() =>
                     {
                         RuleFor(p => p.DepartFrom)
-                            .MustAsync(async (v, ct) => await airportRepository.AirportExists(v, ct))
+                            .MustAsync(async (v, ct) => await airportRepository.AirportExists(v!, ct))
                             .WithMessage("Invalid airport group specified");
                     });
             });

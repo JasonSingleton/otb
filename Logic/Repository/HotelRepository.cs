@@ -26,4 +26,13 @@ public class HotelRepository : IHotelRepository
     {
         return ValueTask.FromResult(Hotels.Count());
     }
+
+    public Task<IEnumerable<Hotel>> FindHotels(string travelTo, DateTimeOffset departOn, int duration, CancellationToken cancellationToken)
+    {
+        var query = Hotels.Where(h =>
+            h.LocalAirports.Contains(travelTo) && h.ArrivalDate == departOn.Date && h.Nights == duration);
+
+        return Task.FromResult(query);
+    }
+    
 }
