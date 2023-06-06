@@ -10,4 +10,13 @@
       <PackageReference Include="FluentValidation" Version="11.5.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="DataSet\flight.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+        <None Update="DataSet\hotel.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
 </Project>

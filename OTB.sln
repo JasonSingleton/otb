@@ -7,8 +7,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{364B11DB-5142-4D50-BB0D-48CCD9862B95}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		flight.json = flight.json
-		hotel.json = hotel.json
 		Notes.md = Notes.md
 		OntheBeach-programming-exercise.md = OntheBeach-programming-exercise.md
 	EndProjectSection
